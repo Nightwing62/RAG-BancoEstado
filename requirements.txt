@@ -1,0 +1,6 @@
+langchain
+
+langchain genai
+python-dotenv # Para leer el archivo .env
+pypdf # Para leer archivos PDF
+chromadb # Para la base de datos de vectores
