@@ -1,9 +1,5 @@
-# Ignorar el entorno virtual
 venv/
-
-# Ignorar las llaves y secretos
-.env
-
-# Ignorar archivos temporales de Python y de la base de datos
 __pycache__/
-*.sqlite3
+.env
+db/
+*.pyc

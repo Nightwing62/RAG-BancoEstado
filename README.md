@@ -1,62 +1,44 @@
-# Agente Inteligente BancoEstado
+# Agente Inteligente BancoEstado con Observabilidad
 
-## Descripción
+Proyecto desarrollado para implementar un agente de IA aplicado a un flujo organizacional simulado de BancoEstado.
 
-Este proyecto implementa un agente inteligente basado en IA para apoyar a ejecutivos comerciales de BancoEstado en la consulta de normativas, generación de reportes, análisis de casos y resumen de información.
-
-El sistema utiliza un enfoque RAG (Retrieval-Augmented Generation) para consultar documentación institucional almacenada en formato PDF, permitiendo generar respuestas fundamentadas en información oficial.
-
-El proyecto fue desarrollado como parte de la asignatura de Agentes Inteligentes y Automatización Organizacional.
+El sistema permite consultar documentación institucional mediante RAG, generar reportes, analizar casos, resumir información y registrar métricas de observabilidad para evaluar el desempeño del agente.
 
 ---
 
-## Objetivo
+## Funcionalidades principales
 
-Desarrollar un agente capaz de:
-
-- Consultar documentación institucional.
-- Mantener memoria de conversaciones.
-- Generar reportes ejecutivos.
-- Analizar situaciones comerciales.
-- Adaptar su comportamiento según el tipo de solicitud.
-
----
-
-## Arquitectura General
-
-Usuario
-↓
-Agente LangChain
-↓
-Gemini 2.0 Flash
-↓
-Herramientas Especializadas
-├── Consulta documental (RAG)
-├── Generación de reportes
-├── Análisis de casos
-└── Resumen de información
-↓
-ChromaDB + PDF Institucional
+* Consulta documental usando RAG.
+* Recuperación de información desde PDF institucional.
+* Generación automática de reportes.
+* Análisis de casos financieros.
+* Resumen de información.
+* Memoria conversacional.
+* Registro de logs de ejecución.
+* Registro de métricas de observabilidad.
+* Dashboard de monitoreo con Streamlit.
 
 ---
 
-## Tecnologías Utilizadas
+## Tecnologías utilizadas
 
-- Python 3.11+
-- LangChain
-- Google Gemini API
-- ChromaDB
-- Sentence Transformers
-- HuggingFace Embeddings
-- PyPDFLoader
-- dotenv
+* Python
+* LangChain
+* Google Gemini API
+* ChromaDB
+* Sentence Transformers
+* HuggingFace Embeddings
+* PyPDFLoader
+* Streamlit
+* dotenv
+* JSON
 
 ---
 
-## Estructura del Proyecto
+## Estructura del proyecto
 
 ```text
-Proyecto_BancoEstado/
+RAG-BancoEstado/
 │
 ├── data/
 │   └── manual_bancoestado_simulado.pdf
@@ -64,152 +46,293 @@ Proyecto_BancoEstado/
 ├── db/
 │   └── Base vectorial ChromaDB
 │
+├── logs/
+│   └── agente.log
+│
 ├── memoria/
 │   └── historial.json
 │
+├── metricas/
+│   └── metricas.json
+│
+├── reportes/
+│   └── reportes generados automáticamente
+│
 ├── src/
-├── main.py
-├── rag_pipeline.py
+│   ├── main.py
+│   ├── rag_pipeline.py
+│   ├── logger.py
+│   ├── metricas.py
+│   ├── dashboard.py
+│   └── utils.py
+│
 ├── requirements.txt
-├── .env
+├── .env.example
+├── .gitignore
 └── README.md
-```
-
-## Funcionalidades
-
-### Consulta Documental
-
-Permite buscar información dentro de los manuales institucionales utilizando recuperación semántica mediante RAG.
-
-Ejemplo:
-
-```text
-¿Cuáles son los requisitos del Crédito FOGAPE?
-```
-
-### Generación de Reportes
-
-Permite crear reportes ejecutivos basados en información recuperada desde la documentación institucional.
-
-Ejemplo:
-
-```text
-Genera un reporte ejecutivo sobre el Crédito FOGAPE.
-```
-
-### Análisis de Casos
-
-Permite analizar situaciones comerciales y generar recomendaciones.
-
-Ejemplo:
-
-```text
-Analiza una empresa con ingresos variables que solicita financiamiento.
-```
-
-### Resumen de Información
-
-Permite sintetizar información extensa en puntos clave.
-
-Ejemplo:
-
-```text
-Resume la información del Crédito FOGAPE.
 ```
 
 ---
 
-## Memoria del Agente
+## Descripción del sistema
 
-### Memoria de Corto Plazo
+El agente funciona como un asistente para ejecutivos comerciales. Recibe consultas del usuario, analiza la intención de la solicitud y selecciona una herramienta adecuada para responder.
 
-Se implementa mediante el historial de conversación de la sesión actual.
-
-Permite mantener contexto durante la interacción entre usuario y agente.
-
-### Memoria de Largo Plazo
-
-Se implementa mediante un archivo JSON persistente:
+El sistema puede utilizar las siguientes herramientas:
 
 ```text
-memoria/historial.json
+buscar_normativas_banco
+generar_reporte
+analizar_solicitud
+resumir_documento
 ```
 
-Este archivo almacena:
+La información documental se recupera desde un archivo PDF ubicado en la carpeta `data/`. El contenido del documento se procesa mediante embeddings y se almacena en una base vectorial ChromaDB.
 
-- Fecha de la interacción.
-- Consulta realizada.
-- Respuesta generada.
+---
 
-Permitiendo conservar información entre distintas ejecuciones del sistema.
+## Observabilidad implementada
+
+Para el Parcial 3 se agregó una capa de observabilidad que permite analizar el comportamiento del agente.
+
+Las métricas implementadas son:
+
+* Latencia de respuesta.
+* Estado de ejecución: OK o ERROR.
+* Herramienta utilizada.
+* Largo de la respuesta generada.
+* Frecuencia de errores.
+* Cantidad total de consultas.
+
+Los datos se almacenan en:
+
+```text
+metricas/metricas.json
+```
+
+---
+
+## Trazabilidad
+
+Cada ejecución del agente genera un registro en:
+
+```text
+logs/agente.log
+```
+
+Cada log contiene:
+
+* Fecha y hora.
+* Pregunta del usuario.
+* Herramienta utilizada.
+* Latencia.
+* Estado de ejecución.
+* Respuesta generada.
+* Error detectado, si corresponde.
+
+---
+
+## Dashboard
+
+El proyecto incluye un dashboard desarrollado con Streamlit.
+
+El dashboard permite visualizar:
+
+* Total de consultas.
+* Latencia promedio.
+* Cantidad de errores.
+* Tasa de error.
+* Herramientas más utilizadas.
+* Evolución de la latencia.
+* Distribución de estados OK y ERROR.
+
+Para ejecutar el dashboard:
+
+```bash
+streamlit run src/dashboard.py
+```
 
 ---
 
 ## Instalación
 
-### 1. Clonar repositorio
+Clonar el repositorio:
 
 ```bash
 git clone https://github.com/usuario/proyecto-bancoestado.git
 ```
 
-### 2. Ingresar al proyecto
+Ingresar a la carpeta del proyecto:
 
 ```bash
 cd proyecto-bancoestado
 ```
 
-### 3. Crear entorno virtual
+Crear entorno virtual:
 
 ```bash
 python -m venv venv
 ```
 
-### 4. Activar entorno virtual
-
-Windows:
+Activar entorno virtual en Windows:
 
 ```bash
 venv\Scripts\activate
 ```
 
-### 5. Instalar dependencias
+Instalar dependencias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## pip install langchain-google-genai
-## pip install langchain-community
-## pip install langchain langchain-community langchain-google-genai chromadb pypdf python-dotenv
 ---
 
 ## Configuración
 
-Crear archivo `.env`
+Crear un archivo `.env` en la raíz del proyecto.
+
+Contenido del archivo:
 
 ```env
 GOOGLE_API_KEY=TU_API_KEY
 ```
 
+El archivo `.env` no debe subirse a GitHub.
+
+Para documentar la configuración se incluye el archivo:
+
+```text
+.env.example
+```
+
+Ejemplo:
+
+```env
+GOOGLE_API_KEY=TU_API_KEY_AQUI
+```
+
 ---
 
-## Ejecución
+## Ejecución del agente
 
-Ejecutar:
+Desde la raíz del proyecto ejecutar:
 
 ```bash
 python src/main.py
 ```
 
+Ejemplo de interacción:
+
+```text
+Ejecutivo Comercial: ¿Cuáles son los requisitos del Crédito FOGAPE?
+```
+
+Para cerrar el agente:
+
+```text
+salir
+```
+
 ---
 
-## Flujo de Funcionamiento
+## Ejecución del dashboard
 
-1. El usuario realiza una consulta.
-2. El agente analiza la intención.
-3. Selecciona la herramienta adecuada.
-4. Recupera contexto desde ChromaDB si es necesario.
-5. Gemini genera la respuesta.
-6. La interacción se almacena en memoria.
-7. Los reportes se guardan automáticamente.
+Primero se deben realizar consultas al agente para generar métricas.
+
+Luego ejecutar:
+
+```bash
+streamlit run src/dashboard.py
+```
+
+---
+
+## Archivos generados automáticamente
+
+Durante la ejecución se generan los siguientes archivos:
+
+```text
+memoria/historial.json
+logs/agente.log
+metricas/metricas.json
+reportes/reporte_YYYYMMDD_HHMMSS.txt
+```
+
+---
+
+## Pruebas sugeridas
+
+Consulta documental:
+
+```text
+¿Cuáles son los requisitos del Crédito FOGAPE?
+```
+
+Generación de reporte:
+
+```text
+Genera un reporte ejecutivo sobre el Crédito FOGAPE.
+```
+
+Análisis de caso:
+
+```text
+Analiza una empresa con ingresos variables que solicita financiamiento.
+```
+
+Resumen:
+
+```text
+Resume la información del Crédito FOGAPE.
+```
+
+Consulta fuera del documento:
+
+```text
+¿Qué tasas tiene el crédito hipotecario?
+```
+
+Esta última prueba permite verificar que el agente no invente información cuando el dato no se encuentra en la documentación disponible.
+
+---
+
+## Seguridad y uso responsable
+
+El sistema considera medidas básicas de seguridad:
+
+* Uso de archivo `.env` para proteger la API Key.
+* Exclusión de `.env` mediante `.gitignore`.
+* Uso de `.env.example` como plantilla.
+* Validación de entradas del usuario.
+* Registro de errores sin exponer claves privadas.
+* Instrucción al agente para no inventar información.
+* Respuesta explícita cuando la información no está disponible en los documentos.
+
+---
+
+## Recomendaciones de mejora
+
+A partir de los datos obtenidos en métricas y logs, se pueden considerar las siguientes mejoras:
+
+* Agregar más documentos institucionales para ampliar la cobertura del RAG.
+* Optimizar prompts para reducir latencia.
+* Implementar caché para consultas frecuentes.
+* Mejorar la clasificación de intención del usuario.
+* Ampliar el dashboard con métricas de precisión y consistencia.
+* Separar logs técnicos de logs visibles para auditoría.
+
+---
+
+## Autor
+
+* Felipe Cárdenas
+---
+
+## Referencias
+
+* LangChain Documentation.
+* Google Gemini API Documentation.
+* ChromaDB Documentation.
+* Streamlit Documentation.
+* Sentence Transformers Documentation.
