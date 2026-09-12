@@ -56,3 +56,203 @@ violations {
 }
 ]
 Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:11:24.885006
+Pregunta: resumen ejecutivo
+Herramienta utilizada: error
+Latencia: 0.04 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:31:40.460933
+Pregunta: resumen ejecutivo
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:32:27.684265
+Pregunta: resumen ejecutivo
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:34:51.399636
+Pregunta: resumen ejecutivo
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:40:49.066583
+Pregunta: resumen ejectutivo 
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:50:33.855827
+Pregunta: resumen ejecutivo
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 15:52:32.719238
+Pregunta: hola
+Herramienta utilizada: error
+Latencia: 0.01 segundos
+Estado: ERROR
+Error: SystemMessages are not yet supported!
+
+To automatically convert the leading SystemMessage to a HumanMessage,
+set  `convert_system_message_to_human` to True. Example:
+
+llm = ChatGoogleGenerativeAI(model="gemini-pro", convert_system_message_to_human=True)
+
+Respuesta: Sin respuesta
+
+============================================================
+Fecha: 2026-09-10 17:37:35.461073
+Pregunta: Hola agente ia
+Herramienta utilizada: agente_general
+Latencia: 9.58 segundos
+Estado: OK
+Respuesta: ¡Hola! Soy tu agente inteligente de apoyo para BancoEstado. Estoy aquí para ayudarte a consultar normativas, analizar casos financieros, generar reportes ejecutivos y resumir información. 
+
+¿En qué te puedo colaborar hoy?
+
+============================================================
+Fecha: 2026-09-10 17:49:55.586020
+Pregunta: consulta normativas
+Herramienta utilizada: buscar_normativas_banco
+Latencia: 23.81 segundos
+Estado: OK
+Respuesta: He consultado la información normativa disponible. A modo de ejemplo, respecto al **Crédito FOGAPE para Microempresas**:
+
+* **Beneficiarios:** Micro y pequeñas empresas con ventas anuales de hasta 100.000 UF.
+* **Tasa de interés máxima:** 1,5% mensual.
+* **Plazos:** Entre 12 y 48 meses de plazo de pago, con opción de hasta 6 meses de gracia.
+* **Requisito excluyente:** No registrar morosidades vigentes en el sistema financiero al momento de la evaluación.
+
+Por favor, indícame sobre qué producto, crédito o normativa específica deseas consultar para brindarte detalles exactos.
+
+============================================================
+Fecha: 2026-09-10 17:52:45.602936
+Pregunta: genera un reportee
+Herramienta utilizada: generar_reporte
+Latencia: 56.38 segundos
+Estado: OK
+Respuesta: Estimado/a, a continuación presento el reporte ejecutivo solicitado basado en la normativa del Crédito FOGAPE para Microempresas:
+
+---
+
+# REPORTE EJECUTIVO: NORMATIVA CRÉDITO FOGAPE PARA MICROEMPRESAS
+
+## 1. Resumen Ejecutivo
+El presente documento sintetiza las condiciones clave y el marco regulatorio para la adjudicación de créditos bajo el fondo de garantía **FOGAPE** dirigidos al segmento de microempresas. El programa busca inyectar liquidez al sector mediante condiciones financieras preferenciales (tasas controladas y períodos de gracia), manteniendo al mismo tiempo un perfil de riesgo controlado al exigir un comportamiento de pago al día en el sistema financiero.
+
+---
+
+## 2. Puntos Principales
+
+### A. Perfil del Beneficiario (Alcance)
+* **Límite de Ventas:** Dirigido a empresas con ventas anuales de **hasta 100.000 UF**.
+
+### B. Condiciones Financieras
+* **Tasa de Interés Máxima:** Tope fijado en **1,5% mensual**.
+* **Plazo del Crédito:** Financiamiento a mediano plazo, estructurado entre **12 y 48 meses**.
+* **Período de Gracia:** Flexibilidad inicial de pago de **hasta 6 meses**.
+
+### C. Requisitos y Criterios de Elegibilidad
+* **Condición Excluyente:** El solicitante **no debe registrar morosidades vigentes** en el sistema financiero al momento de la evaluación.
+
+---
+
+## 3. Conclusión
+La normativa del Crédito FOGAPE para microempresas constituye una herramienta de financiamiento estratégica que equilibra el incentivo económico con la responsabilidad financiera:
+
+1. **Atractivo Operativo:** Ofrece condiciones competitivas de tasa y plazos flexibles que facilitan la operatividad y salud de caja de las empresas beneficiarias.
+2. **Control de Riesgo:** El requisito excluyente sobre morosidades vigentes asegura que los recursos se destinen a unidades productivas con viabilidad y conducta de pago responsable.
+
+============================================================
+Fecha: 2026-09-12 15:40:24.436959
+Pregunta: memoria_largo_plazo = cargar_memoria()
+Herramienta utilizada: agente_general
+Latencia: 5.39 segundos
+Estado: OK
+Respuesta: Estimado/a ejecutivo/a, estoy listo para asistirte. ¿En qué puedo ayudarte hoy? Puedo buscar información sobre normativas y productos, analizar casos de clientes, resumir documentos o generar reportes ejecutivos.
+
+============================================================
+Fecha: 2026-09-12 15:41:13.935957
+Pregunta: Mi cliente se llama Carlos y está consultando por un crédito.
+Herramienta utilizada: buscar_normativas_banco, buscar_normativas_banco
+Latencia: 24.12 segundos
+Estado: OK
+Respuesta: Estimado/a ejecutivo/a, para poder brindarle una orientación exacta a Carlos, ¿podría especificar qué tipo de crédito está buscando (por ejemplo, Crédito FOGAPE/Microempresas, Consumo o Hipotecario)?
+
+Si se trata de un crédito de empresa/microempresa como FOGAPE, los requisitos generales incluyen:
+- Ventas anuales de hasta 100.000 UF.
+- Plazo de pago entre 12 y 48 meses (con hasta 6 meses de gracia).
+- Tasa de interés máxima de 1.5% mensual.
+- Requisito excluyente: No registrar morosidades vigentes en el sistema financiero.
+
+Por favor, indíqueme más detalles sobre la situación de Carlos o el producto específico para asistirlo de manera más detallada.
+
+============================================================
+Fecha: 2026-09-12 15:44:49.255901
+Pregunta: Ejecutivo Comercial: ¿Cómo se llama el cliente?
+Herramienta utilizada: agente_general
+Latencia: 1.51 segundos
+Estado: OK
+Respuesta: El cliente se llama Carlos.

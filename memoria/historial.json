@@ -1,0 +1,32 @@
+[
+    {
+        "fecha": "2026-09-10 17:37:35.304701",
+        "pregunta": "Hola agente ia",
+        "respuesta": "¡Hola! Soy tu agente inteligente de apoyo para BancoEstado. Estoy aquí para ayudarte a consultar normativas, analizar casos financieros, generar reportes ejecutivos y resumir información. \n\n¿En qué te puedo colaborar hoy?"
+    },
+    {
+        "fecha": "2026-09-10 17:49:55.449121",
+        "pregunta": "consulta normativas",
+        "respuesta": "He consultado la información normativa disponible. A modo de ejemplo, respecto al **Crédito FOGAPE para Microempresas**:\n\n* **Beneficiarios:** Micro y pequeñas empresas con ventas anuales de hasta 100.000 UF.\n* **Tasa de interés máxima:** 1,5% mensual.\n* **Plazos:** Entre 12 y 48 meses de plazo de pago, con opción de hasta 6 meses de gracia.\n* **Requisito excluyente:** No registrar morosidades vigentes en el sistema financiero al momento de la evaluación.\n\nPor favor, indícame sobre qué producto, crédito o normativa específica deseas consultar para brindarte detalles exactos."
+    },
+    {
+        "fecha": "2026-09-10 17:52:45.464596",
+        "pregunta": "genera un reportee",
+        "respuesta": "Estimado/a, a continuación presento el reporte ejecutivo solicitado basado en la normativa del Crédito FOGAPE para Microempresas:\n\n---\n\n# REPORTE EJECUTIVO: NORMATIVA CRÉDITO FOGAPE PARA MICROEMPRESAS\n\n## 1. Resumen Ejecutivo\nEl presente documento sintetiza las condiciones clave y el marco regulatorio para la adjudicación de créditos bajo el fondo de garantía **FOGAPE** dirigidos al segmento de microempresas. El programa busca inyectar liquidez al sector mediante condiciones financieras preferenciales (tasas controladas y períodos de gracia), manteniendo al mismo tiempo un perfil de riesgo controlado al exigir un comportamiento de pago al día en el sistema financiero.\n\n---\n\n## 2. Puntos Principales\n\n### A. Perfil del Beneficiario (Alcance)\n* **Límite de Ventas:** Dirigido a empresas con ventas anuales de **hasta 100.000 UF**.\n\n### B. Condiciones Financieras\n* **Tasa de Interés Máxima:** Tope fijado en **1,5% mensual**.\n* **Plazo del Crédito:** Financiamiento a mediano plazo, estructurado entre **12 y 48 meses**.\n* **Período de Gracia:** Flexibilidad inicial de pago de **hasta 6 meses**.\n\n### C. Requisitos y Criterios de Elegibilidad\n* **Condición Excluyente:** El solicitante **no debe registrar morosidades vigentes** en el sistema financiero al momento de la evaluación.\n\n---\n\n## 3. Conclusión\nLa normativa del Crédito FOGAPE para microempresas constituye una herramienta de financiamiento estratégica que equilibra el incentivo económico con la responsabilidad financiera:\n\n1. **Atractivo Operativo:** Ofrece condiciones competitivas de tasa y plazos flexibles que facilitan la operatividad y salud de caja de las empresas beneficiarias.\n2. **Control de Riesgo:** El requisito excluyente sobre morosidades vigentes asegura que los recursos se destinen a unidades productivas con viabilidad y conducta de pago responsable."
+    },
+    {
+        "fecha": "2026-09-12 15:40:24.047559",
+        "pregunta": "memoria_largo_plazo = cargar_memoria()",
+        "respuesta": "Estimado/a ejecutivo/a, estoy listo para asistirte. ¿En qué puedo ayudarte hoy? Puedo buscar información sobre normativas y productos, analizar casos de clientes, resumir documentos o generar reportes ejecutivos."
+    },
+    {
+        "fecha": "2026-09-12 15:41:13.788426",
+        "pregunta": "Mi cliente se llama Carlos y está consultando por un crédito.",
+        "respuesta": "Estimado/a ejecutivo/a, para poder brindarle una orientación exacta a Carlos, ¿podría especificar qué tipo de crédito está buscando (por ejemplo, Crédito FOGAPE/Microempresas, Consumo o Hipotecario)?\n\nSi se trata de un crédito de empresa/microempresa como FOGAPE, los requisitos generales incluyen:\n- Ventas anuales de hasta 100.000 UF.\n- Plazo de pago entre 12 y 48 meses (con hasta 6 meses de gracia).\n- Tasa de interés máxima de 1.5% mensual.\n- Requisito excluyente: No registrar morosidades vigentes en el sistema financiero.\n\nPor favor, indíqueme más detalles sobre la situación de Carlos o el producto específico para asistirlo de manera más detallada."
+    },
+    {
+        "fecha": "2026-09-12 15:44:49.114086",
+        "pregunta": "Ejecutivo Comercial: ¿Cómo se llama el cliente?",
+        "respuesta": "El cliente se llama Carlos."
+    }
+]

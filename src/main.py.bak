@@ -1,14 +1,14 @@
-﻿import os
+import os
 import json
 import time
 
 from datetime import datetime
 from dotenv import load_dotenv
 
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.agents import initialize_agent, AgentType
 from langchain.memory import ConversationBufferMemory
 from langchain_core.tools import tool
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 from rag_pipeline import crear_pipeline_rag
 from logger import registrar_log
@@ -42,7 +42,9 @@ def guardar_memoria(memoria):
         )
 
 
-
+# ==================================================
+# LIMPIEZA DE RESPUESTAS
+# ==================================================
 
 def extraer_texto(contenido):
     if isinstance(contenido, list):
@@ -72,48 +74,54 @@ def iniciar_agente():
     os.makedirs("logs", exist_ok=True)
     os.makedirs("metricas", exist_ok=True)
 
-
+    # ==================================================
+    # 1. MODELO LLM
+    # ==================================================
 
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-3.6-flash",
-            temperature=0.1,
-            conversation_system_message_to_human=True
+            model="gemini-2.0-flash",
+            temperature=0.1
         )
 
-        print("âœ… Gemini cargado correctamente")
+        print("✅ Gemini cargado correctamente")
 
     except Exception as e:
-        print(f"âŒ Error cargando Gemini: {e}")
+        print(f"❌ Error cargando Gemini: {e}")
         return
 
+    # ==================================================
+    # 2. RAG
+    # ==================================================
 
     try:
         retriever = crear_pipeline_rag(
             "data/manual_bancoestado_simulado.pdf"
         )
 
-        print("âœ… RAG cargado correctamente")
+        print("✅ RAG cargado correctamente")
 
     except Exception as e:
-        print(f"âŒ Error cargando RAG: {e}")
+        print(f"❌ Error cargando RAG: {e}")
         return
 
-
+    # Lista para registrar herramientas usadas
     herramientas_usadas = []
 
-
+    # ==================================================
+    # 3. TOOL CONSULTA DOCUMENTAL
+    # ==================================================
 
     @tool
     def buscar_normativas_banco(query: str) -> str:
         """
-        Busca informaciÃ³n en documentos oficiales de BancoEstado.
-        Ãštil para consultas sobre requisitos, normativas, productos,
-        plazos, crÃ©ditos o condiciones comerciales.
+        Busca información en documentos oficiales de BancoEstado.
+        Útil para consultas sobre requisitos, normativas, productos,
+        plazos, créditos o condiciones comerciales.
         """
 
-        print("\nðŸ” DECISIÃ“N: Consulta documental")
-        print("ðŸ” TOOL USADA: buscar_normativas_banco")
+        print("\n🔍 DECISIÓN: Consulta documental")
+        print("🔍 TOOL USADA: buscar_normativas_banco")
 
         herramientas_usadas.append("buscar_normativas_banco")
 
@@ -121,7 +129,7 @@ def iniciar_agente():
             docs = retriever.invoke(query)
 
             if not docs:
-                return "No se encontrÃ³ informaciÃ³n en la documentaciÃ³n oficial."
+                return "No se encontró información en la documentación oficial."
 
             resultado = "\n\n".join(
                 doc.page_content for doc in docs
@@ -132,31 +140,33 @@ def iniciar_agente():
         except Exception as e:
             return f"Error usando herramienta RAG: {e}"
 
-
+    # ==================================================
+    # 4. TOOL GENERACIÓN DE REPORTES
+    # ==================================================
 
     @tool
     def generar_reporte(texto: str) -> str:
         """
-        Genera un reporte ejecutivo a partir de informaciÃ³n entregada.
-        Ãštil cuando el usuario pide un informe, reporte o resumen ejecutivo.
+        Genera un reporte ejecutivo a partir de información entregada.
+        Útil cuando el usuario pide un informe, reporte o resumen ejecutivo.
         """
 
-        print("\nðŸ“ DECISIÃ“N: Generar reporte")
-        print("ðŸ“ TOOL USADA: generar_reporte")
+        print("\n📝 DECISIÓN: Generar reporte")
+        print("📝 TOOL USADA: generar_reporte")
 
         herramientas_usadas.append("generar_reporte")
 
         prompt = f"""
         Genera un reporte ejecutivo profesional, claro y estructurado
-        a partir de la siguiente informaciÃ³n:
+        a partir de la siguiente información:
 
         {texto}
 
         El reporte debe incluir:
-        - TÃ­tulo
+        - Título
         - Resumen ejecutivo
         - Puntos principales
-        - ConclusiÃ³n
+        - Conclusión
         """
 
         respuesta = llm.invoke(prompt)
@@ -172,17 +182,19 @@ def iniciar_agente():
 
         return texto_respuesta
 
-
+    # ==================================================
+    # 5. TOOL ANÁLISIS
+    # ==================================================
 
     @tool
     def analizar_solicitud(caso: str) -> str:
         """
         Analiza situaciones financieras o comerciales.
-        Ãštil cuando el usuario pide evaluar riesgos, casos o recomendaciones.
+        Útil cuando el usuario pide evaluar riesgos, casos o recomendaciones.
         """
 
-        print("\nðŸ§  DECISIÃ“N: Analizar caso")
-        print("ðŸ§  TOOL USADA: analizar_solicitud")
+        print("\n🧠 DECISIÓN: Analizar caso")
+        print("🧠 TOOL USADA: analizar_solicitud")
 
         herramientas_usadas.append("analizar_solicitud")
 
@@ -193,32 +205,35 @@ def iniciar_agente():
 
         Entrega la respuesta con esta estructura:
 
-        1. AnÃ¡lisis del caso
+        1. Análisis del caso
         2. Riesgos detectados
         3. Recomendaciones
-        4. ConclusiÃ³n
+        4. Conclusión
         """
 
         respuesta = llm.invoke(prompt)
 
         return extraer_texto(respuesta.content)
 
+    # ==================================================
+    # 6. TOOL RESUMEN
+    # ==================================================
 
     @tool
     def resumir_documento(texto: str) -> str:
         """
-        Resume informaciÃ³n extensa en puntos clave.
-        Ãštil cuando el usuario pide resumir una respuesta anterior,
-        un documento o informaciÃ³n recuperada.
+        Resume información extensa en puntos clave.
+        Útil cuando el usuario pide resumir una respuesta anterior,
+        un documento o información recuperada.
         """
 
-        print("\nðŸ“„ DECISIÃ“N: Resumir contenido")
-        print("ðŸ“„ TOOL USADA: resumir_documento")
+        print("\n📄 DECISIÓN: Resumir contenido")
+        print("📄 TOOL USADA: resumir_documento")
 
         herramientas_usadas.append("resumir_documento")
 
         prompt = f"""
-        Resume la siguiente informaciÃ³n en mÃ¡ximo 5 puntos claros:
+        Resume la siguiente información en máximo 5 puntos claros:
 
         {texto}
         """
@@ -228,7 +243,7 @@ def iniciar_agente():
         return extraer_texto(respuesta.content)
 
     # ==================================================
-    # LISTA DE HERRAMIENTAS
+    # 7. LISTA DE HERRAMIENTAS
     # ==================================================
 
     tools = [
@@ -239,75 +254,82 @@ def iniciar_agente():
     ]
 
     # ==================================================
-    # PROMPT DEL AGENTE
+    # 8. PROMPT DEL AGENTE
     # ==================================================
 
     system_prompt = """
     Eres un agente inteligente de apoyo para ejecutivos comerciales
     de BancoEstado.
 
-    Tu funciÃ³n es responder consultas, recuperar informaciÃ³n desde
-    documentos internos, generar reportes, resumir informaciÃ³n y analizar
+    Tu función es responder consultas, recuperar información desde
+    documentos internos, generar reportes, resumir información y analizar
     casos financieros.
 
     Herramientas disponibles:
 
     1. buscar_normativas_banco:
-       Ãºsala para consultar informaciÃ³n en documentos oficiales.
+       úsala para consultar información en documentos oficiales.
 
     2. generar_reporte:
-       Ãºsala cuando el usuario pida un informe o reporte ejecutivo.
+       úsala cuando el usuario pida un informe o reporte ejecutivo.
 
     3. analizar_solicitud:
-       Ãºsala cuando el usuario pida analizar un caso o situaciÃ³n.
+       úsala cuando el usuario pida analizar un caso o situación.
 
     4. resumir_documento:
-       Ãºsala cuando el usuario pida resumir informaciÃ³n.
+       úsala cuando el usuario pida resumir información.
 
     Reglas obligatorias:
 
-    - Nunca inventes informaciÃ³n.
-    - Si la consulta requiere informaciÃ³n documental, usa buscar_normativas_banco.
+    - Nunca inventes información.
+    - Si la consulta requiere información documental, usa buscar_normativas_banco.
     - Si el usuario pide un reporte, usa generar_reporte.
     - Si el usuario pide analizar un caso, usa analizar_solicitud.
     - Si el usuario pide resumir, usa resumir_documento.
-    - Si una tarea tiene varias etapas, ejecÃºtalas en orden.
-    - Si la informaciÃ³n no aparece en los documentos, indÃ­calo claramente.
+    - Si una tarea tiene varias etapas, ejecútalas en orden.
+    - Si la información no aparece en los documentos, indícalo claramente.
     - Responde con lenguaje profesional, claro y breve.
     """
 
-
+    # ==================================================
+    # 9. MEMORIA DE CORTO PLAZO
+    # ==================================================
 
     memory = ConversationBufferMemory(
         memory_key="chat_history",
-        return_messages=False
+        return_messages=True
     )
 
     memoria_largo_plazo = cargar_memoria()
 
-
+    # ==================================================
+    # 10. CREAR AGENTE COMPATIBLE CON TU VERSIÓN
+    # ==================================================
 
     try:
         agent = initialize_agent(
-        tools=tools,
-        llm=llm,
-        agent=AgentType.CONVERSATIONAL_REACT_DESCRIPTION,
-        verbose=True,
-        memory=memory,
-        agent_kwargs={"prefix": system_prompt},
-        handle_parsing_errors=True
-    )
+            tools=tools,
+            llm=llm,
+            agent=AgentType.STRUCTURED_CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+            verbose=True,
+            memory=memory,
+            agent_kwargs={
+                "prefix": system_prompt
+            },
+            handle_parsing_errors=True
+        )
 
-        print(" Agente creado correctamente")
-
+        print("✅ Agente creado correctamente con initialize_agent")
 
     except Exception as e:
-        print(f" Error creando agente: {e}")
+        print(f"❌ Error creando agente: {e}")
         return
 
+    # ==================================================
+    # 11. LOOP PRINCIPAL
+    # ==================================================
 
-
-    print("\nðŸ¤– Agente listo.")
+    print("\n🤖 Agente listo.")
     print("Escribe 'salir' para terminar.")
     print("-" * 60)
 
@@ -366,9 +388,9 @@ def iniciar_agente():
                 estado="OK"
             )
 
-            print(f"\nðŸ¤– Asistente IA:\n\n{respuesta_final}")
-            print(f"\nâ±ï¸ Latencia: {latencia:.2f} segundos")
-            print(f"ðŸ§© Herramienta(s): {herramienta_final}")
+            print(f"\n🤖 Asistente IA:\n\n{respuesta_final}")
+            print(f"\n⏱️ Latencia: {latencia:.2f} segundos")
+            print(f"🧩 Herramienta(s): {herramienta_final}")
 
         except Exception as e:
 
@@ -393,8 +415,8 @@ def iniciar_agente():
                 error=str(e)
             )
 
-            print(f"\nâŒ Error: {e}")
-            print(f"â±ï¸ Latencia hasta el error: {latencia:.2f} segundos")
+            print(f"\n❌ Error: {e}")
+            print(f"⏱️ Latencia hasta el error: {latencia:.2f} segundos")
 
         print("-" * 60)
 

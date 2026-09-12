@@ -7,5 +7,122 @@
         "estado": "ERROR",
         "largo_respuesta": 0,
         "error": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 51.267826652s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 51\n}\n]"
+    },
+    {
+        "fecha": "2026-09-10 15:11:24.449035",
+        "pregunta": "resumen ejecutivo",
+        "herramienta": "error",
+        "latencia": 0.03802371025085449,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:31:40.458634",
+        "pregunta": "resumen ejecutivo",
+        "herramienta": "error",
+        "latencia": 0.007860422134399414,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:32:27.682822",
+        "pregunta": "resumen ejecutivo",
+        "herramienta": "error",
+        "latencia": 0.005781412124633789,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:34:51.397871",
+        "pregunta": "resumen ejecutivo",
+        "herramienta": "error",
+        "latencia": 0.006386756896972656,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:40:48.954765",
+        "pregunta": "resumen ejectutivo ",
+        "herramienta": "error",
+        "latencia": 0.006978273391723633,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:50:33.746188",
+        "pregunta": "resumen ejecutivo",
+        "herramienta": "error",
+        "latencia": 0.008625030517578125,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 15:52:32.289476",
+        "pregunta": "hola",
+        "herramienta": "error",
+        "latencia": 0.013727188110351562,
+        "estado": "ERROR",
+        "largo_respuesta": 0,
+        "error": "SystemMessages are not yet supported!\n\nTo automatically convert the leading SystemMessage to a HumanMessage,\nset  `convert_system_message_to_human` to True. Example:\n\nllm = ChatGoogleGenerativeAI(model=\"gemini-pro\", convert_system_message_to_human=True)\n"
+    },
+    {
+        "fecha": "2026-09-10 17:37:35.322082",
+        "pregunta": "Hola agente ia",
+        "herramienta": "agente_general",
+        "latencia": 9.579405546188354,
+        "estado": "OK",
+        "largo_respuesta": 221,
+        "error": null
+    },
+    {
+        "fecha": "2026-09-10 17:49:55.469042",
+        "pregunta": "consulta normativas",
+        "herramienta": "buscar_normativas_banco",
+        "latencia": 23.806738138198853,
+        "estado": "OK",
+        "largo_respuesta": 581,
+        "error": null
+    },
+    {
+        "fecha": "2026-09-10 17:52:45.597818",
+        "pregunta": "genera un reportee",
+        "herramienta": "generar_reporte",
+        "latencia": 56.37832832336426,
+        "estado": "OK",
+        "largo_respuesta": 1842,
+        "error": null
+    },
+    {
+        "fecha": "2026-09-12 15:40:24.430059",
+        "pregunta": "memoria_largo_plazo = cargar_memoria()",
+        "herramienta": "agente_general",
+        "latencia": 5.390120029449463,
+        "estado": "OK",
+        "largo_respuesta": 212,
+        "error": null
+    },
+    {
+        "fecha": "2026-09-12 15:41:13.817214",
+        "pregunta": "Mi cliente se llama Carlos y está consultando por un crédito.",
+        "herramienta": "buscar_normativas_banco, buscar_normativas_banco",
+        "latencia": 24.119828462600708,
+        "estado": "OK",
+        "largo_respuesta": 658,
+        "error": null
+    },
+    {
+        "fecha": "2026-09-12 15:44:49.130705",
+        "pregunta": "Ejecutivo Comercial: ¿Cómo se llama el cliente?",
+        "herramienta": "agente_general",
+        "latencia": 1.5093820095062256,
+        "estado": "OK",
+        "largo_respuesta": 27,
+        "error": null
     }
 ]
